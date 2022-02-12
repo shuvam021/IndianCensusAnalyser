@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndianCensusAnalyser", "IndianCensusAnalyser\IndianCensusAnalyser.csproj", "{B8B92C1C-9D57-41AE-963E-A3EDD7A0F9F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{CFC3052F-2EA8-40E2-9023-CBB265608B0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{B8B92C1C-9D57-41AE-963E-A3EDD7A0F9F7}.Release|x64.Build.0 = Release|Any CPU
 		{B8B92C1C-9D57-41AE-963E-A3EDD7A0F9F7}.Release|x86.ActiveCfg = Release|Any CPU
 		{B8B92C1C-9D57-41AE-963E-A3EDD7A0F9F7}.Release|x86.Build.0 = Release|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Debug|x64.Build.0 = Debug|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Debug|x86.Build.0 = Debug|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Release|x64.ActiveCfg = Release|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Release|x64.Build.0 = Release|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Release|x86.ActiveCfg = Release|Any CPU
+		{CFC3052F-2EA8-40E2-9023-CBB265608B0E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

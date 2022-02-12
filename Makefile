@@ -1,7 +1,7 @@
 test:
 	dotnet test Tests
 
-run: test
+run:
 	dotnet run -p IndianCensusAnalyser
 
 slnup:
