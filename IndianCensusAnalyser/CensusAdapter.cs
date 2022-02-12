@@ -1,6 +1,5 @@
+using System;
 using System.IO;
-
-using System.Net;
 
 namespace IndianCensusAnalyser
 {
@@ -11,22 +10,15 @@ namespace IndianCensusAnalyser
             try
             {
                 if (!File.Exists(path))
-                {
-                    throw new CensusAnalyserException("File Not Found", CensusExceptionType.FileNotFound);
-                }
+                    throw new CensusAnalyserException(CensusExceptionType.FileNotFound);
                 if (Path.GetExtension(path) != ".csv")
-                {
-                    throw new CensusAnalyserException("Invalid file type", CensusExceptionType.InvalidFileType);
-                }
-
+                    throw new CensusAnalyserException(CensusExceptionType.InvalidFileType);
                 string[] data = File.ReadAllLines(path);
                 if (data[0] != headers)
-                {
-                    throw new CensusAnalyserException("Incorrect header in Data", CensusExceptionType.IncorrectHeader);
-                }
+                    throw new CensusAnalyserException(CensusExceptionType.IncorrectHeader);
                 return data;
             }
-            catch (CensusAnalyserException e)
+            catch (Exception e)
             {
                 throw e;
             }

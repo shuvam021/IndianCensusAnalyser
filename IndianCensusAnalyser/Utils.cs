@@ -15,31 +15,25 @@ namespace IndianCensusAnalyser
         InvalidFileType,
         IncorrectHeader,
         NoSuchCountry,
-        IncorrectDelimiter
+        IncorrectDelimiter,
+        IncorrectData,
     }
     public class CensusAnalyserException : Exception
     {
-        public string message;
-        public CensusExceptionType exception;
-        public Dictionary<CensusExceptionType, string> customMessages = new Dictionary<CensusExceptionType, string>(){
+        private readonly Dictionary<CensusExceptionType, string> _messages = new Dictionary<CensusExceptionType, string>(){
             {CensusExceptionType.NoSuchCountry, "No Such Country"},
             {CensusExceptionType.FileNotFound, "File Not Found"},
             {CensusExceptionType.InvalidFileType, "Invalid file type"},
             {CensusExceptionType.IncorrectHeader, "Incorrect header in Data"},
             {CensusExceptionType.IncorrectDelimiter, "File contains wrong delimiter"},
+            {CensusExceptionType.IncorrectData, "Insufficient Data"},
         };
-        public CensusAnalyserException(){}
-        public CensusAnalyserException(string message, CensusExceptionType exception): base(message){}
-        public CensusAnalyserException(CensusExceptionType exception)
+
+        private readonly CensusExceptionType _type;
+        public override string Message => _messages[_type];
+        public CensusAnalyserException(CensusExceptionType type)
         {
-            this.exception = exception;
-            this.message = this.customMessages[this.exception];
+            _type = type;
         }
-
-        // public CensusAnalyserException(string message, CensusExceptionType exception) : base(message)
-        // {
-        //     this.exception = exception;
-        // }
-
     }
 }

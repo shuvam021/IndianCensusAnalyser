@@ -27,7 +27,7 @@ namespace Tests
             string path = @"../Docs/IndianPopulation.csv";
             try
             {
-                stateRecords = app.LoadCSVData(Country.INDIA, path, "State,Population,AreaInSqKm,DensityPerSqKm");
+                stateRecords = CsvAdaptorFactory.LoadCSVData(Country.INDIA, path, "State,Population,AreaInSqKm,DensityPerSqKm");
             }
             catch (Exception e)
             {

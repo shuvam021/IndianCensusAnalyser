@@ -13,7 +13,7 @@ namespace IndianCensusAnalyser
             Country country, string path, string headers
         )
         {
-            return new CsvAdaptorFactory().LoadCSVData(country, path, headers);
+            return CsvAdaptorFactory.LoadCSVData(country, path, headers);
         }
     }
 }

@@ -5,28 +5,34 @@ namespace IndianCensusAnalyser
 {
     public class IndianCensusAdapter : CensusAdapter
     {
-        string[] data;
-        Dictionary<string, CensusDTO> state;
+        private string[] _data;
+        private readonly Dictionary<string, CensusDTO> _state = new Dictionary<string, CensusDTO>();
         public Dictionary<string, CensusDTO> LoadCensusData(string path, string headers)
         {
-            data = GetCensusData(path, headers);
-            state = new Dictionary<string, CensusDTO>();
-            foreach (string item in data.Skip(1))
+            _data = GetCensusData(path, headers);
+            foreach (var item in _data.Skip(1))
             {
                 if (!item.Contains(","))
-                {
-                    var excp = new CensusAnalyserException();
                     throw new CensusAnalyserException(CensusExceptionType.IncorrectDelimiter);
-                }
 
                 string[] column = item.Split(',');
-
-                if (path.Contains("StateCodeDataDAO.csv"))
-                    state.Add(column[0], new CensusDTO(new StateCodeDataDAO(column[0], column[1], column[2], column[3])));
-                if (path.Contains("PopulationDataDAO.csv"))
-                    state.Add(column[0], new CensusDTO(new PopulationDataDAO(column[0], column[1], column[2], column[3])));
+                switch (headers)
+                {
+                    case "SrNo,State Name,TIN,StateCode":
+                        _state.Add(column[0], new CensusDTO(
+                            new StateCodeDataDAO(column[0],column[1],column[2], column[3])
+                        ));
+                        break;
+                    case "State,Population,AreaInSqKm,DensityPerSqKm":
+                        _state.Add(column[0], new CensusDTO(
+                            new PopulationDataDAO(column[0], column[1], column[2], column[3])
+                        ));
+                        break;
+                    default:
+                        throw new CensusAnalyserException(CensusExceptionType.IncorrectData);
+                }
             }
-            return state;
+            return _state;
         }
     }
 }
