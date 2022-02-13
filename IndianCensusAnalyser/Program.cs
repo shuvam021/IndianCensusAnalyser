@@ -1,11 +1,18 @@
 ﻿using System;
+using System.IO;
 
 namespace IndianCensusAnalyser
 {
     class Program
     {
-        private const string populationDataDAOFile = @"/home/shuvam/Code/IndianCensusAnalyser/IndianCensusAnalyser/Docs/PopulationDataDAO.csv";
-        // private const string stateCodeDataDAOFile = @"/home/shuvam/Code/IndianCensusAnalyser/IndianCensusAnalyser/Docs/StateCodeDataDAO.csv";
+        private static readonly string ProjectPath = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetFullPath("."))));
+        private static readonly string _populationDataDAOFile;
+        private static string _stateCodeDataDaoFile;
+        static Program()
+        {
+            _populationDataDAOFile = ProjectPath + @"/Docs/PopulationDataDAO.csv";
+            _stateCodeDataDaoFile = ProjectPath + @"/Docs/StateCodeDataDAO.csv";
+        }
 
         static void Main(string[] args)
         {
@@ -13,7 +20,7 @@ namespace IndianCensusAnalyser
             {
                 var records = CsvAdaptorFactory.LoadCSVData(
                     Country.INDIA,
-                    populationDataDAOFile,
+                    _populationDataDAOFile,
                     "State,Population,AreaInSqKm,DensityPerSqKm");
                 foreach (var item in records)
                 {
@@ -23,7 +30,7 @@ namespace IndianCensusAnalyser
             catch (Exception e)
             {
                 Console.WriteLine(e.Message + "\n\n");
-                Console.WriteLine(e);
+                // Console.WriteLine(e);
                 Console.WriteLine("Something went \"Wrong\" Fix your code idiot...");
             }
         }
