@@ -20,7 +20,7 @@ namespace IndianCensusAnalyser
     }
     public class CensusAnalyserException : Exception
     {
-        private readonly Dictionary<CensusExceptionType, string> _messages = new Dictionary<CensusExceptionType, string>(){
+        public Dictionary<CensusExceptionType, string> msgs = new Dictionary<CensusExceptionType, string>(){
             {CensusExceptionType.NoSuchCountry, "No Such Country"},
             {CensusExceptionType.FileNotFound, "File Not Found"},
             {CensusExceptionType.InvalidFileType, "Invalid file type"},
@@ -29,11 +29,11 @@ namespace IndianCensusAnalyser
             {CensusExceptionType.IncorrectData, "Insufficient Data"},
         };
 
-        private readonly CensusExceptionType _type;
-        public override string Message => _messages[_type];
+        public readonly CensusExceptionType type;
+        public override string Message => msgs[type];
         public CensusAnalyserException(CensusExceptionType type)
         {
-            _type = type;
+            this.type = type;
         }
     }
 }
